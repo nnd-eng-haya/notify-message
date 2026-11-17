@@ -30,12 +30,30 @@
 
     {{-- メインコンテンツ --}}
     <main class="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {{-- Blade + Alpine.js --}}
-        <x-message />
+        @if( Route::is('top') || Route::is('other') || Route::is('link'))
+            {{-- Blade + Alpine.js --}}
+            <fieldset class="border rounded">
+                <legend class="ml-3">Livewireなし + Alpine.jsでセッションとイベント両対応のメッセージ表示</legend>
+                <x-message />
+            </fieldset>
+        @endif
+
         {{ $slot ?? '' }}
         @yield('content')
-        {{-- Livewire + Alpine.js --}}
-        <livewire:livewire.message />
+
+        @if( Route::is('top') || Route::is('other') || Route::is('link'))
+            {{-- Livewire + Alpine.js --}}
+            <fieldset class="border rounded">
+                <legend class="ml-3">Livewireで表示内容作成 + Alpine.jsにイベント送信してメッセージ表示</legend>
+                <livewire:livewire.message />
+            </fieldset>
+            <div class="mt-10"></div>
+            {{-- Livewire(no event) + Alpine.js --}}
+            <fieldset class="border rounded">
+                <legend class="ml-3">Livewireで表示内容作成 + Alpine.jsのinitでメッセージ表示</legend>
+                <livewire:livewire.not_resend_event />
+            </fieldset>
+        @endif
     </main>
 
     {{-- フッター --}}

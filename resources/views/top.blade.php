@@ -1,9 +1,9 @@
 <x-layouts.app title="トップページ">
     <div class="space-y-2">
-        <h1 class="flex items-center justify-center">トップページ</h1>
+        <h1 class="flex items-center justify-center">イベント送信</h1>
         <livewire:livewire.update />
     </div>
-    <div class="mt-3"></div>
+    <div class="mt-10"></div>
     <div class="space-y-2">
         <h1 class="flex items-center justify-center">他ページにリダイレクト</h1>
         <div class="flex items-center justify-center gap-2">
@@ -17,7 +17,7 @@
                     <option value="info">インフォメッセージ</option>
                 </select>
                 <button type="submit" class="rounded px-2 py-1 bg-indigo-600 hover:bg-indigo-700 text-white rounded transition duration-200 cursor-pointer">
-                    リダイレクト
+                    POST後リダイレクト
                 </button>
             </form>
         </div>

@@ -2,6 +2,9 @@
 
 use Livewire\Component;
 
+/**
+ * メッセージ表示イベントを発火するコンポーネント
+ */
 new class extends Component
 {
     /**
@@ -9,7 +12,6 @@ new class extends Component
      */
     public function onBtnClick(string $type)
     {
-        logger("ボタンおされた");
         $msg = "";
 
         // メッセージタイプでメッセージを変える
@@ -34,6 +36,9 @@ new class extends Component
             default:
                 throw new Exception("不正なメッセージタイプです。");
         }
+        logger("イベント送信:");
+        logger("    メッセージ種別　: {$type}");
+        logger("    メッセージ　　　: {$msg}");
         // メッセージイベント送信
         $this->dispatch('notify',
             messageType: $type,
@@ -46,31 +51,16 @@ new class extends Component
 ?>
 
 <div class="flex items-center justify-center gap-2">
-    <button type="button" wire:click="onBtnClick('success')" class="rounded px-2 py-1 bg-indigo-600 hover:bg-indigo-700 text-white rounded transition duration-200 cursor-pointer">
+    <button type="button" wire:click="onBtnClick('success')" class="px-2 py-1 bg-indigo-600 hover:bg-indigo-700 text-white rounded transition duration-200 cursor-pointer">
         成功メッセージ
     </button>
-    <button type="button" wire:click="onBtnClick('error')" class="rounded px-2 py-1 bg-indigo-600 hover:bg-indigo-700 text-white rounded transition duration-200 cursor-pointer">
+    <button type="button" wire:click="onBtnClick('error')" class="px-2 py-1 bg-indigo-600 hover:bg-indigo-700 text-white rounded transition duration-200 cursor-pointer">
         エラーメッセージ
     </button>
-    <button type="button" wire:click="onBtnClick('warning')" class="rounded px-2 py-1 bg-indigo-600 hover:bg-indigo-700 text-white rounded transition duration-200 cursor-pointer">
+    <button type="button" wire:click="onBtnClick('warning')" class="px-2 py-1 bg-indigo-600 hover:bg-indigo-700 text-white rounded transition duration-200 cursor-pointer">
         ワーニングメッセージ
     </button>
-    <button type="button" wire:click="onBtnClick('info')" class="rounded px-2 py-1 bg-indigo-600 hover:bg-indigo-700 text-white rounded transition duration-200 cursor-pointer">
+    <button type="button" wire:click="onBtnClick('info')" class="px-2 py-1 bg-indigo-600 hover:bg-indigo-700 text-white rounded transition duration-200 cursor-pointer">
         インフォメッセージ
     </button>
 </div>
-<!-- Geminiが生成したコード
-<div x-data="{ show: false, message: '', timeout: null }"
-    @notify.window="
-        message = $event.detail.message;
-        show = true;
-        clearTimeout(timeout);
-        timeout = setTimeout(() => { show = false }, 3000);
-    "
-    x-show="show"
-    x-transition.opacity.duration.500ms
-    style="display: none;"
-    class="p-4 mb-4 text-green-800 bg-green-100 rounded-lg">
-    <span x-text="message"></span>
-</div>
--->

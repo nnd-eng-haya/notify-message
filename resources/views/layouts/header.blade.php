@@ -11,7 +11,11 @@
                 <nav class="hidden md:flex ml-8 space-x-2">
                     <a href="{{ url('/top') }}"
                         class="px-3 py-2 rounded-md text-sm font-medium transition-colors {{ request()->is('playlist*') ? 'bg-indigo-600 text-white' : 'text-slate-300 hover:bg-slate-800 hover:text-white' }}">
-                        トップ
+                        トップページ
+                    </a>
+                    <a href="{{ url('/simple') }}"
+                        class="px-3 py-2 rounded-md text-sm font-medium transition-colors {{ request()->is('playlist*') ? 'bg-indigo-600 text-white' : 'text-slate-300 hover:bg-slate-800 hover:text-white' }}">
+                        シンプルなメッセージ通知
                     </a>
                 </nav>
             </div>

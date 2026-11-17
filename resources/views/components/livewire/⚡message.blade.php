@@ -3,6 +3,9 @@
 use Livewire\Attributes\On;
 use Livewire\Component;
 
+/**
+ * メッセージを表示するイベントをAlpine.jsに送信するコンポーネント
+ */
 new class extends Component
 {
     // メッセージタイプ
@@ -67,7 +70,9 @@ new class extends Component
         timeout: null
     }"
     @show_message.window="
+        console.log('show_message event raised in components/livewire/message.blade.php.');
         show = true;
+        // 表示時間が設定されている場合のみタイムアウト処理
         if(@js($duration) > 0) {
             clearTimeout(timeout);
             timeout = setTimeout(() => { show = false }, @js($duration));

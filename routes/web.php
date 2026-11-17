@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\LinkController;
 use App\Http\Controllers\OtherController;
+use App\Http\Controllers\SimpleController;
 use App\Http\Controllers\TopController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +18,5 @@ Route::post('/top', [TopController::class, 'update'])->name('top.update');
 Route::get('/other', [OtherController::class, 'index'])->name('other');
 // リンクページ表示
 Route::get('/link', [LinkController::class, 'index'])->name('link');
+// シンプルな通知処理ページ表示
+Route::get('/simple', [SimpleController::class, 'index'])->name('simple');
