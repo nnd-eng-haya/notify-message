@@ -81,13 +81,13 @@ new class extends Component
                     timeout = setTimeout(() => { $wire.hideMessage() }, @js($duration));
                 }
             "
-            class="border rounded-lg p-2 text-sm {{ $this->colorClass }}"
+            class="border rounded-lg p-2 text-sm {{ $colorClass }}"
             x-transition.opacity.duration.500ms
         >
-            {{ $this->message }}
-            @if($this->messageLink)
-                <a href="{{ $this->messageLink['url'] }}" class="underline text-indigo-400 hover:text-indigo-300 ml-2 font-medium">
-                    {{ $this->messageLink['text'] }}
+            {{ $message }}
+            @if($messageLink)
+                <a href="{{ $messageLink['url'] }}" class="underline text-indigo-400 hover:text-indigo-300 ml-2 font-medium">
+                    {{ $messageLink['text'] }}
                 </a>
             @endif
         </div>

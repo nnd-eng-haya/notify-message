@@ -44,7 +44,7 @@ new class extends Component
             messageType: $type,
             message: $msg,
             link: ['url' => route('link'), 'text' => 'リンクをクリック'],
-            duration: 3000
+            duration: 3000,
         );
     }
 };
