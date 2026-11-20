@@ -59,6 +59,14 @@ new class extends Component
         // メッセージ表示
         $this->isShow = true;
     }
+
+    /**
+     * メッセージ非表示
+     */
+    public function hideMessage()
+    {
+        $this->isShow = false;
+    }
 };
 ?>
 
@@ -70,7 +78,7 @@ new class extends Component
                 // 表示時間が設定されている場合のみタイムアウト処理
                 if(@js($duration) > 0) {
                     clearTimeout(timeout);
-                    timeout = setTimeout(() => {$wire.set('isShow', false) }, @js($duration));
+                    timeout = setTimeout(() => { $wire.hideMessage() }, @js($duration));
                 }
             "
             class="border rounded-lg p-2 text-sm {{ $this->colorClass }}"
